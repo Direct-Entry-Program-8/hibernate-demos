@@ -15,16 +15,13 @@ public class ContextInAction2 {
             session.beginTransaction();
 
             Customer dulanga = session.get(Customer.class, 2);
-            dulanga.setAddress("Kadawatha");
+            dulanga.setAddress("Panadura");
             System.out.println(session.contains(dulanga));  // Yes
             session.detach(dulanga);
-            System.out.println(session.contains(dulanga));  // No
-            Customer dulanga2 = (Customer) session.merge(dulanga);
-            System.out.println(session.contains(dulanga));  // false
-            System.out.println(session.contains(dulanga2));  // true
-            System.out.println(dulanga2 == dulanga);
-            System.out.println(dulanga2);
-            System.out.println(dulanga);
+            Customer dulanga2 = session.get(Customer.class, 2);
+            //System.out.println(session.contains(dulanga));  // No
+            session.update(dulanga);
+            //System.out.println(session.contains(dulanga));  // Yes
 
             session.getTransaction().commit();
         } catch (Throwable t) {
