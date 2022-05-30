@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 
 import java.io.Serializable;
 
-public class CreateCustomer {
+public class ReadCustomer {
 
     public static void main(String[] args) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -16,13 +16,12 @@ public class CreateCustomer {
         try {
             session.beginTransaction();
 
-            Customer customer = new Customer(3, "Loshi", "Galle");
-//            session.save(customer);
-            Serializable id = session.save(customer);
-            System.out.println(id);
+            Customer customer = session.get(Customer.class, 1);
+            System.out.println(customer);
+            Customer customer2 = session.find(Customer.class, 2);
+            System.out.println(customer2);
 
             session.getTransaction().commit();
-
         } catch (Throwable t) {
             if (session != null && session.getTransaction() != null) {
                 session.getTransaction().rollback();
