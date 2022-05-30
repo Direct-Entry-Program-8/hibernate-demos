@@ -5,7 +5,7 @@ import lk.ijse.dep8.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class ContextInAction3 {
+public class RefreshDemo2 {
 
     public static void main(String[] args) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -14,14 +14,14 @@ public class ContextInAction3 {
         try {
             session.beginTransaction();
 
-            // transient?? detached??
-            Customer kawwa = new Customer(3, "Kawwa", "Walana");
-            Customer clonedKawwa = (Customer) session.merge(kawwa);
-            System.out.println(session.contains(kawwa));    // False
-            System.out.println(session.contains(clonedKawwa));    // Yes
-            System.out.println(kawwa == clonedKawwa);   // False
-            System.out.println(kawwa);
-            System.out.println(clonedKawwa);
+            Customer kawwa = session.get(Customer.class, 2);
+            session.detach(kawwa);
+            System.out.println(session.contains(kawwa));        // false
+            kawwa.setFullName("Kawwa+");
+            Customer customer = session.get(Customer.class, 2);
+            session.refresh(kawwa);
+            System.out.println(session.contains(kawwa));        // true
+            System.out.println(session.contains(customer));        // true
 
             session.getTransaction().commit();
         } catch (Throwable t) {
