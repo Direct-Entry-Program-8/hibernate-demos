@@ -5,9 +5,7 @@ import lk.ijse.dep8.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.io.Serializable;
-
-public class CreateCustomer {
+public class UpdateCustomer {
 
     public static void main(String[] args) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -16,14 +14,19 @@ public class CreateCustomer {
         try {
             session.beginTransaction();
 
-            Customer customer = new Customer(2, "Dulanga", "Matara");
-//            session.save(customer);
-            Serializable id = session.save(customer);
-            System.out.println(id);
+            Customer loshi1 = new Customer(1, "Loshi", "Panadura Walana");
+            loshi1.setAddress("Matara");
+            boolean isInContext = session.contains(loshi1);
+            System.out.println(isInContext);
+
+            Customer loshi2 = session.get(Customer.class, 1);
+            isInContext = session.contains(loshi2);
+            System.out.println(isInContext);
+            loshi2.setAddress("Wadduwa");
 
             session.getTransaction().commit();
-
         } catch (Throwable t) {
+            t.printStackTrace();
             if (session != null && session.getTransaction() != null) {
                 session.getTransaction().rollback();
             }

@@ -5,9 +5,7 @@ import lk.ijse.dep8.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.io.Serializable;
-
-public class ReadCustomer {
+public class ReadCustomer3 {
 
     public static void main(String[] args) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -16,10 +14,18 @@ public class ReadCustomer {
         try {
             session.beginTransaction();
 
-            Customer customer = session.get(Customer.class, 10);
-            System.out.println(customer);
-            Customer customer2 = session.find(Customer.class, 20);
-            System.out.println(customer2);
+            Customer loshi = session.get(Customer.class, 1);
+            Customer loshi1 = session.get(Customer.class, 1);
+            Customer loshi2 = session.get(Customer.class, 1);
+            Customer loshi3 = session.get(Customer.class, 1);
+            Customer loshi4 = session.get(Customer.class, 1);
+            Customer loshi5 = session.get(Customer.class, 1);
+            Customer loshi6 = session.get(Customer.class, 1);
+            Customer loshi7 = session.get(Customer.class, 1);
+            Customer loshi8 = session.get(Customer.class, 1);
+
+            System.out.println(loshi == loshi2);
+            System.out.println( loshi2 == loshi3);
 
             session.getTransaction().commit();
         } catch (Throwable t) {
