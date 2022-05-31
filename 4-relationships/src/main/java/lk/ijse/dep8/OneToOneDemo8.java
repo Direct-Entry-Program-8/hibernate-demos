@@ -1,12 +1,17 @@
 package lk.ijse.dep8;
 
-import lk.ijse.dep8.entity.Boy;
-import lk.ijse.dep8.entity.Girl;
+import lk.ijse.dep8.entity.Boy2;
+import lk.ijse.dep8.entity.BoyGirl;
+import lk.ijse.dep8.entity.BoyGirlPK;
+import lk.ijse.dep8.entity.Girl2;
 import lk.ijse.dep8.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class OneToOneDemo5 {
+import java.sql.Date;
+import java.time.LocalDate;
+
+public class OneToOneDemo8 {
 
     public static void main(String[] args) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -15,10 +20,12 @@ public class OneToOneDemo5 {
         try {
             session.beginTransaction();
 
-            Boy thilina = session.get(Boy.class, "B003");
-            Girl kasuni = session.get(Girl.class, "G001");
+            BoyGirl boyGirl = session.get(BoyGirl.class, new BoyGirlPK("G001", "B001"));
+            Boy2 sasitha = session.get(Boy2.class, "B002");
 
-            thilina.setGir(null);
+            session.remove(boyGirl);
+            boyGirl.setPk(new BoyGirlPK(boyGirl.getGirl().getId(), sasitha.getId()));
+            session.save(boyGirl);
 
             session.getTransaction().commit();
         } catch (Throwable t) {
