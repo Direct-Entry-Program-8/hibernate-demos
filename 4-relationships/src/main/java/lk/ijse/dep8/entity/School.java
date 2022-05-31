@@ -19,7 +19,7 @@ public class School {
     private String address;
     @Column(nullable = false)
     private String contact;
-    @JoinColumn(name = "principal_id", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "principal_id", nullable = false, referencedColumnName = "id", unique = true)
     @OneToOne
     private Principal principal;
 }
