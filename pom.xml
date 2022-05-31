@@ -13,6 +13,7 @@
         <module>1-bootstrapping</module>
         <module>2-bootstrapping</module>
         <module>3-crud</module>
+        <module>4-relationships</module>
     </modules>
 
     <properties>
