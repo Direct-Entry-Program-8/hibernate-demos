@@ -17,9 +17,9 @@ public abstract class HibernateUtil {
                 .build();
 
         Metadata metadata = new MetadataSources(standardRegistry)
-                .addAnnotatedClass(Boy2.class)
-                .addAnnotatedClass(Girl2.class)
-                .addAnnotatedClass(BoyGirl.class)
+                .addAnnotatedClass(Lab.class)
+                .addAnnotatedClass(Projector.class)
+                .addAnnotatedClass(LabProjector.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
