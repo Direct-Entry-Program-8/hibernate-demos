@@ -12,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Table(name = "`Order`")
 public class Order implements Serializable {
     @Id
     @Column(name = "order_id")
