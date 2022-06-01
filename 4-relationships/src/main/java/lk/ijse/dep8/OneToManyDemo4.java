@@ -1,8 +1,6 @@
 package lk.ijse.dep8;
 
 import lk.ijse.dep8.entity.Cart;
-import lk.ijse.dep8.entity.Customer;
-import lk.ijse.dep8.entity.Order;
 import lk.ijse.dep8.entity.User;
 import lk.ijse.dep8.util.HibernateUtil;
 import org.hibernate.Session;
@@ -11,7 +9,7 @@ import org.hibernate.SessionFactory;
 import java.sql.Date;
 import java.time.LocalDate;
 
-public class OneToManyDemo3 {
+public class OneToManyDemo4 {
 
     public static void main(String[] args) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -20,16 +18,8 @@ public class OneToManyDemo3 {
         try {
             session.beginTransaction();
 
-            User dula = new User("dulanga", "ADMIN", "Dulanga");
-            User chamma = new User("chamma", "ADMIN", "Chamma");
-
-            session.save(dula);
-            session.save(chamma);
-
-            session.save(new Cart("C1", Date.valueOf(LocalDate.now())));
-            session.save(new Cart("C2", Date.valueOf(LocalDate.now()),dula));
-            session.save(new Cart("C3", Date.valueOf(LocalDate.now()),dula));
-            session.save(new Cart("C4", Date.valueOf(LocalDate.now()),chamma));
+            Cart c2 = session.get(Cart.class, "C2");
+            c2.setUser(null);
 
             session.getTransaction().commit();
         } catch (Throwable t) {

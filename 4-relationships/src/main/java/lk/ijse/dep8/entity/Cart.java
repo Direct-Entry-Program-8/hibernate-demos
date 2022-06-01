@@ -22,4 +22,9 @@ public class Cart implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "username"))
     @ManyToOne
     private User user;
+
+    public Cart(String id, Date createdDate) {
+        this.id = id;
+        this.createdDate = createdDate;
+    }
 }
