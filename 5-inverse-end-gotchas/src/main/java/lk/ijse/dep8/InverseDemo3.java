@@ -6,7 +6,7 @@ import lk.ijse.dep8.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class InverseDemo1 {
+public class InverseDemo3 {
 
     public static void main(String[] args) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -15,19 +15,14 @@ public class InverseDemo1 {
         try {
             session.beginTransaction();
 
-            Employee dula = new Employee("E001", "Dulanga");
-            Employee kawwa = new Employee("E002", "Kawwa");
-            Employee chamma = new Employee("E003", "Chamma");
+            Spouse mashi = session.get(Spouse.class, "S001");
+//            System.out.println(mashi.getEmployee().getName());
 
-            session.save(dula);
-            session.save(kawwa);
-            session.save(chamma);
+//            Employee chamma = session.get(Employee.class, "E003");
+//            mashi.setEmployee(chamma);
 
-            Spouse mashi = new Spouse("S001", "Mashi", dula);
-            Spouse supuni = new Spouse("S002", "Supuni", kawwa);
-
-            session.save(mashi);
-            session.save(supuni);
+            Employee dula = session.get(Employee.class, "E001");
+//            dula.setSpouse(mashi);
 
             session.getTransaction().commit();
         } catch (Throwable t) {

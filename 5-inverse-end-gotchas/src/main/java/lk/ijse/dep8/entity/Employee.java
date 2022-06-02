@@ -1,21 +1,26 @@
 package lk.ijse.dep8.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.OneToOne;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Employee implements Serializable {
-    @Id
-    private String id;
-    @Column(nullable = false)
-    private String name;
+public class Employee extends PersonalInfo {
+
+    @Setter(AccessLevel.NONE)
+    @OneToOne(mappedBy = "employee")
+    private Spouse spouse;
+
+    public Employee(String id, String name) {
+        super(id, name);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
