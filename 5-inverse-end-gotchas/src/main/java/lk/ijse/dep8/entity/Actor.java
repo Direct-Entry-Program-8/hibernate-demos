@@ -2,10 +2,7 @@ package lk.ijse.dep8.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -28,7 +25,7 @@ public class Actor implements Serializable {
 
     @Setter(AccessLevel.NONE)
     @ManyToMany(mappedBy = "actors")
-    private Set<Movie> movies = new HashSet<>();
+    private List<Movie> movies = new ArrayList<>();
 
     public Actor(String id, String name, Date dateOfBirth) {
         this.id = id;

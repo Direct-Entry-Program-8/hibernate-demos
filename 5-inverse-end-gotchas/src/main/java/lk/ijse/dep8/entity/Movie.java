@@ -26,7 +26,7 @@ public class Movie implements Serializable {
     @JoinTable(name = "Actor_Movie",
             joinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"))
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Actor> actors = new HashSet<>();
 
     public Movie(String id, String name, Date releaseDate) {
