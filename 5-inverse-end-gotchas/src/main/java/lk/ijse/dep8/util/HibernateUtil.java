@@ -1,7 +1,6 @@
 package lk.ijse.dep8.util;
 
-import lk.ijse.dep8.entity.Employee;
-import lk.ijse.dep8.entity.Spouse;
+import lk.ijse.dep8.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -18,8 +17,8 @@ public abstract class HibernateUtil {
                 .build();
 
         Metadata metadata = new MetadataSources(standardRegistry)
-                .addAnnotatedClass(Employee.class)
-                .addAnnotatedClass(Spouse.class)
+                .addAnnotatedClass(Actor.class)
+                .addAnnotatedClass(Movie.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
