@@ -20,7 +20,12 @@ public class CascadeDemo4 {
         try {
             session.beginTransaction();
 
+            Customer bashi = session.get(Customer.class, "C002");
+            System.out.println(session.contains(bashi));
+            System.out.println(session.contains(bashi.getOrderList().get(0)));
 
+            bashi.setName("BAHSI>>...");
+            session.refresh(bashi);
 
             session.getTransaction().commit();
         } catch (Throwable t) {

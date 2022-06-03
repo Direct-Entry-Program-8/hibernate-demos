@@ -18,7 +18,7 @@ public class Customer implements Serializable {
     private String name;
 
     @Setter(AccessLevel.NONE)
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Order> orderList = new ArrayList<>();
 
     public Customer(String id, String name) {
