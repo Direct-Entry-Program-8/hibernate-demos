@@ -15,6 +15,7 @@
         <module>3-crud</module>
         <module>4-relationships</module>
         <module>5-inverse-end-gotchas</module>
+        <module>6-queries</module>
     </modules>
 
     <properties>
