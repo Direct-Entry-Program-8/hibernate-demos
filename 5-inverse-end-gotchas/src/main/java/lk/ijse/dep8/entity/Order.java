@@ -3,6 +3,7 @@ package lk.ijse.dep8.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,6 +20,7 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private Date date;
     @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne
+//    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.PERSIST})
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Customer customer;
 }
