@@ -48,6 +48,8 @@ public class QueryDemo5 {
                                 System.out.printf("%s, %s %s, %s \n", row[0], row[1], row[2], row[3]);
                     });
 
+
+
             session.getTransaction().commit();
         } catch (Throwable t) {
             if (session != null && session.getTransaction() != null) {
