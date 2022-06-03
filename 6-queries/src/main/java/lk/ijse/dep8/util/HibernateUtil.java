@@ -1,5 +1,6 @@
 package lk.ijse.dep8.util;
 
+import lk.ijse.dep8.entity.Contact;
 import lk.ijse.dep8.entity.Customer;
 import lk.ijse.dep8.entity.Order;
 import org.hibernate.SessionFactory;
@@ -20,6 +21,7 @@ public abstract class HibernateUtil {
         Metadata metadata = new MetadataSources(standardRegistry)
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Order.class)
+                .addAnnotatedClass(Contact.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
