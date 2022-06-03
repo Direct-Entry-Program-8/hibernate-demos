@@ -8,8 +8,10 @@ import org.hibernate.SessionFactory;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CascadeDemo2 {
+public class CascadeDemo3 {
 
     public static void main(String[] args) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -18,17 +20,15 @@ public class CascadeDemo2 {
         try {
             session.beginTransaction();
 
-            Order od002 = session.get(Order.class, "OD002");
-            System.out.println(od002.getDate());
-            System.out.println(od002.getCustomer());
+            Customer dulanga = session.get(Customer.class, "C001");
 
-            od002.setDate(Date.valueOf("2020-10-14"));
-            od002.getCustomer().setName("Lahiru Something");
+            List<Order> orderList = new ArrayList<>();
+            Customer bashi = new Customer("C002", "Bashi", orderList);
+            orderList.add(new Order("OD001", Date.valueOf(LocalDate.now()), bashi ));
+            orderList.add(new Order("OD003", Date.valueOf(LocalDate.now()), dulanga ));
+            orderList.add(new Order("OD004", Date.valueOf(LocalDate.now()), bashi ));
 
-            session.refresh(od002);
-
-            System.out.println(od002.getDate());
-            System.out.println(od002.getCustomer());
+            session.persist(bashi);
 
             session.getTransaction().commit();
         } catch (Throwable t) {

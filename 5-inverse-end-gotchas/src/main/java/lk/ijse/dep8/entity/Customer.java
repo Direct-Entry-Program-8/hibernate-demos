@@ -2,9 +2,7 @@ package lk.ijse.dep8.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +18,7 @@ public class Customer implements Serializable {
     private String name;
 
     @Setter(AccessLevel.NONE)
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<>();
 
     public Customer(String id, String name) {
@@ -33,5 +31,10 @@ public class Customer implements Serializable {
         orderList.add(order);
     }
 
-
+    @PrePersist
+    public void prePersist(){
+        if (orderList != null){
+            orderList.forEach(o -> o.setCustomer(this));
+        }
+    }
 }

@@ -21,6 +21,6 @@ public class Order implements Serializable {
     private Date date;
     @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
 //    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.PERSIST})
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     private Customer customer;
 }
