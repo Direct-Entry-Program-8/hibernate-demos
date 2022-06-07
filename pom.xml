@@ -17,6 +17,7 @@
         <module>5-inverse-end-gotchas</module>
         <module>6-queries</module>
         <module>miscellaneous</module>
+        <module>jpa-bootstrapping</module>
     </modules>
 
     <properties>

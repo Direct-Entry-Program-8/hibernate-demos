@@ -1,5 +1,6 @@
 package lk.ijse.dep8.util;
 
+import lk.ijse.dep8.entity.AccountHolder;
 import lk.ijse.dep8.entity.Customer;
 import lk.ijse.dep8.entity.Employee;
 import lk.ijse.dep8.entity.Student;
@@ -20,6 +21,7 @@ public abstract class HibernateUtil {
 
         Metadata metadata = new MetadataSources(standardRegistry)
                 .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(AccountHolder.class)
                 .addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Employee.class)
                 .getMetadataBuilder()
