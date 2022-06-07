@@ -16,6 +16,7 @@
         <module>4-relationships</module>
         <module>5-inverse-end-gotchas</module>
         <module>6-queries</module>
+        <module>miscellaneous</module>
     </modules>
 
     <properties>
