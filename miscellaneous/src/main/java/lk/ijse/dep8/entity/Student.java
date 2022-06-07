@@ -7,16 +7,19 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Student implements Serializable {
-    @SequenceGenerator(name = "student_seq1", sequenceName = "student_seq", allocationSize = 1)
-    @SequenceGenerator(name = "student_seq2")
-    @SequenceGenerator(name = "student_seq3")
+
+    @TableGenerator(name = "id_generator", table = "dep_sequence",
+            pkColumnName = "table_name",
+            valueColumnName = "value",
+            pkColumnValue = "Student", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "id_generator")
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_seq1")
     private int id;
     private String name;
     @Column(name = "contact_number")

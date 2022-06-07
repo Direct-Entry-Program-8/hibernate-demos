@@ -12,9 +12,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer implements Serializable {
-    @SequenceGenerator(name = "customer_seq1", sequenceName = "customer_seq", allocationSize = 1)
+
+//    @TableGenerator(name = "id_generator", table = "dep_sequence",
+//            pkColumnName = "table_name",
+//            valueColumnName = "value",
+//            pkColumnValue = "Customer", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_seq1")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String address;
