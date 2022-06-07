@@ -2,6 +2,7 @@ package lk.ijse.dep8;
 
 import lk.ijse.dep8.entity.Customer;
 import lk.ijse.dep8.entity.Employee;
+import lk.ijse.dep8.entity.Gender;
 import lk.ijse.dep8.entity.Student;
 import lk.ijse.dep8.util.HibernateUtil;
 import org.hibernate.Session;
@@ -29,7 +30,7 @@ public class GeneratedValueDemo1 {
 
             //Serializable id = session.save(new Employee("E001", "Bashi"));
 //            Serializable id = session.save(new Student("Kasun", "078-456789123"));
-            Serializable id = session.save(new Customer("Kasun", "Panadura"));
+            Serializable id = session.save(new Customer("Kasun", "Panadura", Gender.FEMALE));
             System.out.println(id);
 
             if (true)
